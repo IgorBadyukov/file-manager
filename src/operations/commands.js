@@ -17,6 +17,7 @@ import {compress} from "../hash-compress/compress.js";
 import {decompress} from "../hash-compress/decompress.js";
 import { stdin as input, stdout as output, exit } from 'process';
 import readline from 'readline';
+import { showCurrentDir } from './process.js';
 
 const rl = readline.createInterface({ input, output });
 
@@ -25,39 +26,49 @@ export function writeCommand() {
         switch (answer.split(' ')[0]) {
             case 'up':
                 await up();
+                showCurrentDir();
                 break;
             case 'cd':
                 await cd(answer.split(' ')[1]);
+                showCurrentDir();
                 break;
             case 'ls':
                 await ls();
                 break;
             case 'cat':
                 await read(answer.split(' ')[1]);
+                showCurrentDir();
                 break;
             case 'add':
                 await add(answer.split(' ')[1]);
+                showCurrentDir();
                 break;
             case 'rn':
                 await rename(answer.split(' ')[1], answer.split(' ')[2]);
+                showCurrentDir();
                 break;
             case 'cp':
                 await copy(answer.split(' ')[1], answer.split(' ')[2]);
+                showCurrentDir();
                 break;
             case 'mv':
                 await move(answer.split(' ')[1], answer.split(' ')[2]);
+                showCurrentDir();
                 break;
             case 'rm':
                 await remove(answer.split(' ')[1]);
+                showCurrentDir();
                 break;
             case 'hash':
                 await hash(answer.split(' ')[1]);
                 break;
             case 'compress':
                 await compress(answer.split(' ')[1], answer.split(' ')[2]);
+                showCurrentDir();
                 break;
             case 'decompress':
                 await decompress(answer.split(' ')[1], answer.split(' ')[2]);
+                showCurrentDir();
                 break;
             case '.exit':
                 exit();
@@ -66,18 +77,23 @@ export function writeCommand() {
                 switch(answer.split(' ')[1]) {
                     case '--eol':
                         getEol();
+                        showCurrentDir();
                         break;
                     case '--cpus':
                         cpus();
+                        showCurrentDir();
                         break;
                     case '--homedir':
                         homedir();
+                        showCurrentDir();
                         break;
                     case '--username':
                         username();
+                        showCurrentDir();
                         break;
                     case '--architecture':
-                        architecture()
+                        architecture();
+                        showCurrentDir();
                         break;
                     default:
                         console.error('Invalid input (parameters)');
