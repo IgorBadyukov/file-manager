@@ -75,7 +75,7 @@ export function writeCommand() {
                 break;
             case 'os':
                 switch(answer.split(' ')[1]) {
-                    case '--eol':
+                    case '--EOL':
                         getEol();
                         showCurrentDir();
                         break;

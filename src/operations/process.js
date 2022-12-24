@@ -19,5 +19,5 @@ export function processCheck() {
 }
 
 export function showCurrentDir() {
-    console.log(`You are currently in ${cwd()}`);
+    console.log(`\nYou are currently in ${cwd()}`);
 }
